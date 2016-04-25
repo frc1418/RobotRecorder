@@ -1,4 +1,5 @@
 #RobotRecorder
+![ScreenShot](ss.png)
 ####Records NetworkTable values from robot and displays them on graphs for debuggin purposes
 
 ##Recorder
