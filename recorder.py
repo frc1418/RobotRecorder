@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from networktables import NetworkTable
 import optparse
 
@@ -50,8 +52,6 @@ class RobotRecorder:
     def run(self):
         while True:
             pass
-        
-    
     
 if __name__ == '__main__':
     parser = optparse.OptionParser()

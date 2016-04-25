@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import optparse
 
 from NTStorage import NTStorage
@@ -22,8 +24,13 @@ class RobotRecorder:
         f, axarr = plt.subplots(len(self.config["plots"]), sharex=True)
         
         for i, plot in enumerate(self.config["plots"]):
-            for key in plot["keys"]:
-                axarr[i].plot(self.session.get_times(key), self.session.get_values(key), label=key.replace("/SmartDashboard/", ""))
+            for j, key in enumerate(plot["keys"]):
+                if plot["type"] == "xy":
+                    axarr[i].plot(self.session.get_times(key), self.session.get_values(key), label=key.replace("/SmartDashboard/", ""))
+                elif plot["type"] == "bool":
+                    spans = self.session.get_boolean_spans(key)
+                    for span in spans:
+                        axarr[i].axvspan(span[0], span[1], color=plot["keycolors"][j], alpha=0.5, label=key.replace("/SmartDashboard/", ""))
             
             if "highlight" in plot:
                 for j, highlight in enumerate(plot["highlight"]):

@@ -13,6 +13,11 @@
     {
       "keys": ["/SmartDashboard/NavX | Yaw", "/SmartDashboard/NavX | Pitch", "/SmartDashboard/NavX | Roll"],
       "type": "xy"
+    },
+    {
+      "keys": ["/components/autoaim/present"],
+      "keycolors": ["green"],
+      "type": "bool"
     }
   ]
 }
