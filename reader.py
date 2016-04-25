@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 class RobotRecorder:
     
     def __init__(self, options):
-        self.session = pickle.load(open(options.file, "rb"))
+        with open(options.file, "rb") as f:
+            self.session = pickle.load(f)
         
         with open(options.config) as config_file:
             self.config = json.load(config_file)
