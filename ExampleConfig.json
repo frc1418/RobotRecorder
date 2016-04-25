@@ -1,0 +1,18 @@
+{
+  "plots": [
+    {
+      "keys": ["/SmartDashboard/Arm | Encoder"],
+      "type": "xy",
+      "highlight": ["/SmartDashboard/Arm | Forward Limit Switch", "/SmartDashboard/Arm | Reverse Limit Switch", "/SmartDashboard/Arm | Burnout"],
+      "highlightcolor": ["green", "red", "yellow"]
+    },
+    {
+      "keys": ["/SmartDashboard/Drive | Encoder"],
+      "type": "xy"
+    },
+    {
+      "keys": ["/SmartDashboard/NavX | Yaw", "/SmartDashboard/NavX | Pitch", "/SmartDashboard/NavX | Roll"],
+      "type": "xy"
+    }
+  ]
+}
