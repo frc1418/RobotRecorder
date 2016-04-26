@@ -22,6 +22,7 @@ class RobotRecorder:
                 print(key)
         else:
             self.ntgraph = NTPlotter(self.session, self.config)
+            self.ntgraph.show_graph()
     
 if __name__ == '__main__':
     parser = optparse.OptionParser()

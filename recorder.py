@@ -60,9 +60,9 @@ class RobotRecorder:
     
     def run(self):
         while True:
-            time.sleep(1)
             if self.current_session is not None:
                 self.plotter.show_graph()
+            time.sleep(2)
     
 if __name__ == '__main__':
     parser = optparse.OptionParser()

@@ -25,7 +25,6 @@ class NTPlotter:
     def _setup_graph(self):
         if self.f is None or self.axarr is None:
             self.f, self.axarr = plt.subplots(len(self.config["plots"]), sharex=True)
-            print(self.f)
         
         for i, plot in enumerate(self.config["plots"]):
             for j, key in enumerate(plot["keys"]):
