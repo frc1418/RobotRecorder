@@ -41,7 +41,7 @@ class RobotRecorder:
         self.sd.removeGlobalListener(self.updated_value)
         
         if self.current_session is not None:
-            with open("saves/%s.ntstore" %(time.time()), "wb") as f:
+            with open("saves/%s.ntstore" %(time.strftime('%m-%d-%Y_%H:%M:%S')), "wb") as f:
                 pickle.dump(self.current_session, f)
             self.current_session = None
             self.plotter.close()
