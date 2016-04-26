@@ -3,10 +3,10 @@
 import optparse
 
 from NTStorage import NTStorage
+from NTPlotter import NTPlotter
 import pickle
 import time
 import json
-import matplotlib.pyplot as plt
 
 class RobotRecorder:
     
@@ -20,30 +20,8 @@ class RobotRecorder:
         if options.listkeys:
             for key in self.session.get_keys():
                 print(key)
-                
-        f, axarr = plt.subplots(len(self.config["plots"]), sharex=True)
-        
-        for i, plot in enumerate(self.config["plots"]):
-            for j, key in enumerate(plot["keys"]):
-                if plot["type"] == "xy":
-                    axarr[i].plot(self.session.get_times(key), self.session.get_values(key), label=key.replace("/SmartDashboard/", ""))
-                elif plot["type"] == "bool":
-                    spans = self.session.get_boolean_spans(key)
-                    for span in spans:
-                        axarr[i].axvspan(span[0], span[1], color=plot["keycolors"][j], alpha=0.5, label=key.replace("/SmartDashboard/", ""))
-            
-            if "highlight" in plot:
-                for j, highlight in enumerate(plot["highlight"]):
-                    spans = self.session.get_boolean_spans(highlight)
-                    for span in spans:
-                        axarr[i].axvspan(span[0], span[1], color=plot["highlightcolor"][j], alpha=0.5, label=highlight.replace("/SmartDashboard/", ""))
-            
-            axarr[i].set_title(plot["keys"][0].replace("/SmartDashboard/", ""))
-            axarr[i].legend()
-        
-        #plt.title("Recorded Robot")
-        plt.legend()
-        plt.show()
+        else:
+            self.ntgraph = NTPlotter(self.session, self.config)
     
 if __name__ == '__main__':
     parser = optparse.OptionParser()
