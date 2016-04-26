@@ -3,11 +3,14 @@ import time
 class NTStorage():
     def __init__(self):
         self.vars = {}
-        self.start_time = time.time()
         self.last_recorded_time = None;
-        
         self.listeners = []
         
+        self.reset_timer()
+    
+    def reset_timer(self):
+        self.start_time = time.time()  
+    
     def registar_key(self, key):
         self.vars[key] = [[],[]]
         

@@ -49,6 +49,7 @@ class RobotRecorder:
         
     def new_recording_session(self):
         self.current_session = NTStorage()
+            
         self.sd.addGlobalListener(self.updated_value)
         
         self.plotter = NTPlotter(self.current_session, self.config, live=True)

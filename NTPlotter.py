@@ -52,6 +52,8 @@ class NTPlotter:
         plt.show()
     
     def close(self):
+        plt.clf()
+        plt.cla()
         plt.close()
     
     def redraw(self ,i):
