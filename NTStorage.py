@@ -66,6 +66,29 @@ class NTStorage():
         #print(true_spans)
         return true_spans
     
+    def get_string_spans(self, key):
+        '''Returns the time spans of different strings
+            :return a dictonary with values and their spans 
+        '''
+        if not isinstance(self.vars[key][1][0], str):
+            return None
+        
+        string_spans = {}
+        
+        times = self.vars[key][0]
+        values = self.vars[key][1]
+        
+        for i, value in enumerate(values):
+            if value not in string_spans.keys():
+                string_spans[value] = []
+                
+            if i == len(values)-1:
+                string_spans[value].append([self.last_recorded_time, times[i]]) 
+            else:
+                string_spans[value].append([times[i], times[i+1]])
+                
+        return string_spans
+    
     def get_keys(self):
         return self.vars.keys()
     

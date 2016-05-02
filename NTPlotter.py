@@ -30,20 +30,33 @@ class NTPlotter:
             for j, key in enumerate(plot["keys"]):
                 if plot["type"] == "xy":
                     if self.session.get_key(key) is not None:
-                        self.axarr[i].plot(self.session.get_times(key), self.session.get_values(key), label=key.replace("/SmartDashboard/", ""))
+                        self.axarr[i].plot(self.session.get_times(key), self.session.get_values(key), marker='o')#, label=key.replace("/SmartDashboard/", ""))
                 elif plot["type"] == "bool":
                     if self.session.get_key(key) is not None:
                         spans = self.session.get_boolean_spans(key)
                         for span in spans:
-                            self.axarr[i].axvspan(span[0], span[1], color=plot["keycolors"][j], alpha=0.5, label=key.replace("/SmartDashboard/", ""))
+                            self.axarr[i].axvspan(span[0], span[1], color=plot["keycolors"][j], alpha=0.5)
+                elif plot["type"] == "string":
+                    if self.session.get_key(key) is not None:
+                        spans = self.session.get_string_spans(key)
+                        for key, times in spans.items():
+                            first = True
+                            for time in times:
+                                if first:
+                                    self.axarr[i].axvspan(time[0], time[1], alpha=0.5, label=key, color=plot["keycolors"][key])
+                                    first = False
+                                else:
+                                    self.axarr[i].axvspan(time[0], time[1], alpha=0.5, color=plot["keycolors"][key])
                 
             if "highlight" in plot:
                 for j, highlight in enumerate(plot["highlight"]):
                     if self.session.get_key(highlight) is not None:
                         spans = self.session.get_boolean_spans(highlight)
-                        for span in spans:
-                            self.axarr[i].axvspan(span[0], span[1], color=plot["highlightcolor"][j], alpha=0.5, label=highlight.replace("/SmartDashboard/", ""))
-                
+                        for k, span in enumerate(spans):
+                            if k == 0:
+                                self.axarr[i].axvspan(span[0], span[1], color=plot["highlightcolor"][j], alpha=0.5, label=highlight.replace("/SmartDashboard/", ""))
+                            else:
+                                self.axarr[i].axvspan(span[0], span[1], color=plot["highlightcolor"][j], alpha=0.5)
             self.axarr[i].set_title(plot["keys"][0].replace("/SmartDashboard/", ""))
             self.axarr[i].legend()
             
