@@ -27,7 +27,7 @@ class RobotRecorder:
 if __name__ == '__main__':
     parser = optparse.OptionParser()
     
-    parser.add_option('-f', '--file', default="saves/examples/CameraLowBar.ntstore",help="NTStorage file to be red")
+    parser.add_option('-f', '--file', default="saves/examples/match_55.ntstore",help="NTStorage file to be red")
     
     parser.add_option('-c', '--config', default="ExampleConfig.json", help='Config for graph layout')
     

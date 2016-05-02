@@ -31,7 +31,7 @@
 ####Options
 
 - Files: `-f savefile.ntstore` or `--file savefile.ntstore`
-	- Defualts to example ntstore from 1418's autonmous
+	- Defualts to example ntstore from 1418's match 55 in finals
 - Config: `-c config.json` or `--config config.json`
 	- Defualts to `ExampleConfig.json` configured for 1418's 2016 robot
 - List: `-l` lists the keys in a ntstore file
