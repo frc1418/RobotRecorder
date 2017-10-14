@@ -1,0 +1,36 @@
+{
+    "plots": [{
+            "keys": ["/SmartDashboard/Arm/Encoder"],
+            "type": "xy",
+            "highlight": ["/SmartDashboard/Arm/Forward Limit Switch", "/SmartDashboard/Arm/Reverse Limit Switch", "/SmartDashboard/Arm/Burnout"],
+            "highlightcolor": ["green", "red", "yellow"]
+        },
+        {
+            "keys": ["/SmartDashboard/Drive/Encoder"],
+            "type": "xy"
+        },
+        {
+            "keys": ["/SmartDashboard/Drive/NavX | Yaw"],
+            "type": "xy"
+        },
+        {
+            "keys": ["/components/autoaim/present"],
+            "keycolors": ["green"],
+            "type": "bool"
+        },
+        {
+            "keys": ["/camera/enabled"],
+            "keycolors": ["green"],
+            "type": "bool"
+        },
+        {
+            "keys": ["/robot/mode"],
+            "keycolors": {
+                "teleop": "green",
+                "auto": "yellow",
+                "disabled": "red"
+            },
+            "type": "string"
+        }
+    ]
+}
