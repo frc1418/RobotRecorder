@@ -17,12 +17,8 @@ class RobotRecorder:
         with open(options.config) as config_file:
             self.config = json.load(config_file)
 
-        if options.listkeys:
-            for key in self.session.get_keys():
-                print(key)
-        else:
-            self.ntgraph = NTPlotter(self.session, self.config)
-            self.ntgraph.show_graph()
+        self.ntgraph = NTPlotter(self.session, self.config)
+        self.ntgraph.show_graph()
 
 
 if __name__ == '__main__':
